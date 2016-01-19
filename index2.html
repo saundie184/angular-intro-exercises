@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app='myapp'>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style>
+    .highlight {
+      background-color: yellow;
+    }
+    .warning {
+      color: red;
+    }
+    .success {
+      color: green;
+    }
+  </style>
+  <!--include angular in application -->
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js'></script>
+</head>
+
+<body>
+
+  <div ng-class='{highlight: 4+4==9}'>
+    <h1>Sign Up Page</h1>
+    <input type='password' ng-model='pass' value=''>
+    <p ng-init='pass= ""' ng-class= '[{warning: pass.length < 6}, {success: pass.length >= 6}]' >
+       Your password is {{pass.length}} characters. </p>
+      <button ng-show='pass.length >= 6'>Submit</button>
+      <p ng-show='pass.length < 6'>
+        Invalid password!
+      </p>
+  </div>
+
+
+  <!-- ng-repeat without controller-->
+  <div ng-init='names = ["Harry", "Ron", "Hermione", "Sirius", "Hedwig", "Tonks"]'>
+    <ul>
+      <li ng-repeat='name in names'>
+        {{name}}
+      </li>
+    </ul>
+  </div>
+  <div ng-show="3 + 4 == 5">
+    3 + 4 isn't 5, don't show
+  </div>
+  <div ng-hide="3 + 4 == 5">
+    3 + 4 isn't 5, don't hide
+  </div>
+
+  <!-- ng-repeat with controller-->
+  <div ng-controller='print'>
+    <ul>
+      <li ng-repeat='name in names'>
+        {{name}}
+      </li>
+    </ul>
+    <p>
+      Not in controller:
+    </p>
+    <ul ng-init='marks = ["&spades;", "&clubs;", "&hearts;", "&diams;"]'>
+      <li ng-repeat='mark in marks'>
+        <p>
+          {{mark}}
+        </p>
+      </li>
+    </ul>
+    <ul>
+      <p>
+        In controller:
+      </p>
+      <li ng-repeat='symbol in symbols'>
+        <p>
+          {{symbol}}
+        </p>
+      </li>
+    </ul>
+
+    <ul>
+      <li ng-repeat='d in numbers track by $index'>
+        {{d}}
+      </li>
+    </ul>
+  </div>
+  <script>
+    angular.module("myapp", [])
+      .controller("print", function($scope) {
+        $scope.print = {};
+        $scope.names = ["Harry", "Ron", "Hermione", "Sirius", "Hedwig", "Tonks"];
+        $scope.symbols = ["&spades;", "&clubs;", "&hearts;", "&diams;"];
+        $scope.numbers = [1, 1, 2, 5, 6, 9, 9, 9];
+
+      });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app>
+
+<head>
+  <meta charset="utf-8">
+  <title>Mad Libs</title>
+</head>
+
+<body>
+  <h1>Please fill out the following!</h1>
+  <div>
+    <label for="">Boy's name</label>
+    <input type="text" ng-model='bname' id="" placeholder="">
+  </div>
+  <div>
+    <label for="">Plural noun</label>
+    <input type="text" ng-model='pnoun' id="" placeholder="">
+  </div>
+  <div>
+    <label for="">Adjective</label>
+    <input type="text" ng-model='adj' id="" placeholder="">
+  </div>
+  <div>
+    <label for="">Singular noun</label>
+    <input type="text" ng-model='snoun' id="" placeholder="">
+  </div>
+  <div>
+    <label for="">An insect, plural</label>
+    <input type="text" ng-model='insect' id="" placeholder="">
+  </div>
+  <div>
+    <label for="">Verb, ending in s</label>
+    <input type="text" ng-model='verb' id="" placeholder="">
+  </div>
+  </div>
+  <h2>Mad with Libs</h2>
+  <p>
+    Master cleanse <strong>{{bname | uppercase}}</strong> marfa narwhal. Direct trade shabby chic <strong>{{pnoun | uppercase}}</strong>, 3 wolf moon next level four dollar toast selfies portland <strong>{{adj | uppercase}}</strong> v vinyl keffiyeh messenger
+    bag neutra. Thundercats raw denim church-key <strong>{{snoun | uppercase}}</strong> yr, quinoa cliche bespoke umami. <strong>{{insect | uppercase}}</strong> forage deep v, scenester irony trust <strong>{{verb | uppercase}}</strong> viral craft beer.
+  </p>
+  <!--include angular in application -->
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js'></script>
+
+</body>
+
+</html>

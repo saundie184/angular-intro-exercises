@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!-- tells it to be an angular application. This is a directive-->
+<html ng-app>
+
+<head>
+
+</head>
+
+<body>
+  <h1>Hello World!</h1>
+  <!-- assign it a directive of name. it's a property that can store data-->
+  <!-- <input type='text' ng-model='name'> -->
+  <h1>{{submit}}</h1>
+  <div>
+    <!--ng-init assigns the variable to what the default should be -->
+    <select ng-model='greet' ng-init='greet = "Salutations"'>
+      <option>
+        Hello
+      </option>
+      <option>
+        Greetings
+      </option>
+      <option>
+        Salutations
+      </option>
+      <option>Live long and prosper</option>
+    </select>
+  </div>
+  <div>
+    <input type='text' ng-model='fname' placeholder="first name">
+    <input type='text' ng-model='lname' placeholder="last name">
+  </div>
+  <button ng-click='submit =greet + ", " + fname + " " + lname' ng-init='submit= "Enter your info for a personalized greeting"'>Submit</button>
+  <!-- <div ng-controller="HelloController">
+    <h1>{{hello.title}}</h1>
+  </div> -->
+  <!--Using filters -->
+  <div>{{3.14159265359 | currency: '€'}}</div>
+  <div>
+    <h2>Type something below</h2>
+    <input type='text' ng-model='text'>
+    <h3>Yelling: <strong>{{text | uppercase}}</strong></h3>
+    <h3>Whispering: <em>{{text | lowercase}}</em></h3>
+  </div>
+  <div>
+    <p>
+      How many digits of pi do you want?
+    </p>
+    <span>
+  <select ng-model='num'>
+    <option>
+      2
+    </option>
+    <option>
+      4
+    </option>
+    <option>
+      5
+    </option>
+    <option>
+      6
+    </option>
+    <option>
+      7
+    </option>
+  </select>
+  </span>
+    <p>
+      Here are {{num}} digits.
+    </p>
+    <p>
+      {{3.14159265359 | number:num}}
+    </p>
+  </div>
+  <div>
+    <h1>Super Useful Tip Calculator</h1>
+    <p>
+      How much did your meal cost?
+    </p>
+    <input type='text' ng-model='cost'>
+    <p>
+      How much do you want to tip?
+    </p>
+    <select ng-model='percent' ng-init='percent = "10"'>
+      <option>
+        5
+      </option>
+      <option value={{percent}}>
+        10
+      </option>
+      <option>
+        15
+      </option>
+    </select>
+    <h3>Subtotal: {{cost | currency}}</h3>
+    <h2>Subtotal + Tip: {{ ((percent / 100)+1) * cost | currency}}</h2>
+  </div>
+
+
+
+
+
+  <!--include angular in application -->
+  <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js'></script>
+  <!-- $scope is the model because it can be accessed-->
+  <script>
+    angular.module("myapp", [])
+      .controller("HelloController", function($scope) {
+        $scope.hello = {};
+        $scope.hello.title = "World";
+      });
+  </script>
+</body>
+
+</html>
